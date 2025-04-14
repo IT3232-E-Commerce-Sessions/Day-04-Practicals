@@ -1,5 +1,19 @@
 package com.example.app.controller;
 
-public class ClassController {
-    
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.app.model.Course;
+
+@RestController
+@RequestMapping("/course")
+public class ClassController extends CRUDcontroller<String, Course> {
+    public ClassController(){
+        Course ecommerce = new Course("IT3232", "Practical for E-commerce", 2);
+		Course webservice = new Course("IT2234", "Web Service and server technologies", 3);
+		Course webapplication = new Course("CSC3132", "Web Application Development", 3);
+		getmap().put(webapplication.getCourseId(), webapplication);
+		getmap().put(webservice.getCourseId(), webservice);
+		getmap().put(ecommerce.getCourseId(), ecommerce);
+    }
 }
